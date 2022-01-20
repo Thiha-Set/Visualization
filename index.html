@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+    <!--Navbar for other pages-->
+    <div>
+        <nav>
+            
+        </nav>    
+    </div>
+
+    <!--Graph container-->
+    <div id="cy"></div>
+
+    <!--Node info container-->
+    <div class="nodeInfo" id="nodeInfoBloc">
+        <h1 style="text-decoration: underline;">Netflow Visualization</h1>
+        <div id="networkInfo"></div>
+        <div id="packetInfo"></div>
+        <div id="sIPField"></div>
+        <div id="dIPField"></div>
+        
+        <div class="formDiv">
+            <form action="">
+                <label for="">Insert JSON File:</label><br />
+                <input type="file" accept=".json" name="" id="JSONInput" multiple onchange="processJSON(this)">
+            </form>
+        </div>
+        
+    </div>
+
+    <!--Credits-->
+    <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.19.1/cytoscape.min.js"></script>
+<script src="scripts/main.js"></script>
+</html>
