@@ -1,0 +1,45 @@
+body{
+    margin: 0px;
+}
+#cy{
+    width: 100vw;
+    height: 80vh;
+    display: block;
+    background-color: black;
+}
+#connectionButton{
+    display: none;
+}
+#packetInfo{
+    display: none;
+    background-color: rgb(172, 178, 201);
+    padding: 1%;
+    margin-bottom: 1%;
+}
+h1.packets_heading{
+    margin: 10px;
+}
+div.nodeInfo{
+    background-color: rgba(255,255,255,0.8);
+    padding: 25px;
+}
+div.nodeInfo h1{
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 1%;
+    font-size: 30px;
+}
+
+div.formDiv{
+    background-color: rgb(194, 194, 194);
+    padding: 2%;
+}
+div.formDiv form label{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+}
+
+div.formDiv form input{
+    margin-top: 1%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}

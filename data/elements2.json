@@ -1,0 +1,41 @@
+{
+    "nodes":[
+        {
+            "data": {
+                "id": "CRS", 
+                "netName": "CRS Main",
+                "IPAddress": ["13.50.14.10"],
+                "connections": ["NEX","HHE"],
+                "packets": [
+                    {"sIP": "13.50.14.10", "dIP": "14.20.60.5", "numPackets": 5, "protocol": 6},
+                    {"sIP": "13.50.14.10", "dIP": "14.20.60.6", "numPackets": 5, "protocol": 6},
+                    {"sIP": "13.50.14.10", "dIP": "14.20.60.7", "numPackets": 5, "protocol": 17}
+                ]
+            },
+            "position" : {"x" : 200, "y": 200}
+        },
+        {
+            "data": {
+                "id": "HHE", 
+                "netName": "HHE Class",
+                "IPAddress": ["14.20.60.5", "14.20.60.6","14.20.60.7"], 
+                "connections": ["SCB"],
+                "packets": [
+                    {"sIP": "14.20.60.5", "dIP": "13.50.14.10", "numPackets": 4, "protocol": 6},
+                    {"sIP": "14.20.60.6", "dIP": "13.50.14.10", "numPackets": 2, "protocol": 17},
+                    {"sIP": "14.20.60.7", "dIP": "13.50.14.10", "numPackets": 5, "protocol": 17}
+                ]
+            },
+            "position" : {"x" : 300, "y": 200}
+        }
+    ],
+    "edges":[
+        {
+            "data": {"id": "crsHHE", "source": "CRS", "target": "HHE"}
+        },
+        {
+            "data": {"id": "crsNEX", "source": "CRS", "target": "NEX"}
+        }
+    ]
+    
+}
