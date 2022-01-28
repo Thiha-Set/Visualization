@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization - Help</title>
+</head>
+<link rel="stylesheet" href="stylesheets/style.css">
+
+<body>
+    <!--navigation-->
+    <div class="nav_bar">
+        <nav>
+            <a href="index.html">Visualization | </a>
+            <a href="help.html">Help </a>
+        </nav>
+    </div>
+
+    <!--table of contents-->
+    <div class="help_toc">
+        <h1>Table of Contents</h1>
+        <ul>
+            <li><a href="#helpIntroAbout">Intro/About</a></li>
+            <li>
+                <a href="#helpDatasets">Datasets</a>
+                <ul>
+                    <li><a href="#helpDatasetFormat">Format</a></li>
+                    <li><a href="#helpDatasetSample">Sample</a></li>
+                    <li><a href="#helpDatasetVariables">Variables</a></li>
+                </ul>
+            </li>
+            <li><a href="#helpShortcuts">Shortcuts</a></li>
+        </ul>
+    </div>
+
+    <!--main container-->
+    <div class="help_main">
+        <!--Intro/About-->
+        <h1 id="helpIntroAbout">Intro/About</h1>
+        <p>
+            This is a web application to visualize netflow traffic between two or more networks.
+            Clicking the "Visualization" tab will bring you to the main page containing the visualization pane;
+            visualization will require you to insert your own datasets containing the networks and subnets to be
+            visualized. The datasets will have to adhere to a certain format, which will be detailed in the following
+            subsections.
+        </p>
+        <hr>
+
+        <!--Datasets-->
+        <h1 id="helpDatasets">Datasets</h1>
+
+        <!--Dataset Format-->
+        <h2 id="helpDatasetFormat">Format</h2>
+        <p>
+            The visualization system currently only supports datasets written in JavaScript Object Notation (JSON).
+            Therefore,
+            any datasets will have to be defined as a .JSON file, and satisfy JSON rules and requirements.
+        </p>
+
+        <!--Dataset Sample-->
+        <h2 id="helpDatasetSample">Sample:</h2>
+        <p>Here is a sample dataset: </p>
+        <img src="images/sample_json.png" alt="">
+
+        <!--Dataset variables-->
+        <h2 id="helpDatasetVariables">Variables</h2>
+
+        <h3>"nodes"</h3>
+        <blockquote>
+            <p>a list of all the network nodes in the domain</p>
+        </blockquote>
+
+        <h3>"data"</h3>
+        <blockquote>
+            <p>the data of an individual node to be visualized</p>
+        </blockquote>
+
+        <h3>"id"</h3>
+        <blockquote>
+            <p>the id given to an individual node. Will not be visualized, and primarily used for reference purposes.
+            </p>
+        </blockquote>
+
+        <h3>"netName"</h3>
+        <blockquote>
+            <p>the name of a network node. Will be visualized.</p>
+        </blockquote>
+
+        <h3>"IPAddress"</h3>
+        <blockquote>
+            <p>
+                all subnets belonging to a network node. Will be visualized as subnet nodes when the network node is
+                clicked on, and
+                can be clicked on again to display information regarding the subnet in question.
+            </p>
+        </blockquote>
+
+        <h3>"connections"</h3>
+        <blockquote>
+            <p>the connections the current network has to other networks. Displayed in the information panel. </p>
+        </blockquote>
+
+        <h3>"packets"</h3>
+        <blockquote>
+            <p>the number of packets sent from subnets within the current network to other subnets in other networks.
+            </p><br>
+            <ul class="helpIndentedList" style="background-color: rgb(216, 224, 245);">
+                <li>
+                    <h3>"sIP"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>starting IP; the subnet from where the packet transmission originates</li>
+                </ul>
+
+                <li>
+                    <h3>"dIP"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>destination IP; the target destination to which the packet is sent</li>
+                </ul>
+
+                <li>
+                    <h3>"numPackets"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>the number of packets sent from the sIP to the dIP</li>
+                </ul>
+
+                <li>
+                    <h3>"protocol"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>the protocol used to send the packets. Should be an integer, and adhere to one of the protocols
+                        from the <a href="protocol_list.html" target="_blank">list</a></li>
+                </ul>
+            </ul>
+        </blockquote>
+
+        <h3>"position" (optional)</h3>
+        <blockquote>
+            <p>used to specify the position of a network node on the visual pane. Will use default position if not specified.</p>
+        </blockquote>
+
+        <h3>"edges"</h3>
+        <blockquote>
+            <p>
+                used to specify the connections between two or more network nodes. Uses the IDs of the nodes to serve as source/destination 
+                to establish the visual connection between them. 
+            </p><br>
+            <ul class="helpIndentedList" style="background-color: rgb(216, 224, 245);">
+                <li>
+                    <h3>"data"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>attributes of the connection (i.e. source network node, target network node)</li>
+                </ul>
+
+                <li>
+                    <h3>"id"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>id given to a certain connection. Primarily used for debugging purposes (if any).</li>
+                </ul>
+                
+                <li>
+                    <h3>"source"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>the network node from which a certain connection will be established. Value should be the ID of the network node.</li>
+                </ul>
+
+                <li>
+                    <h3>"target"</h3>
+                </li>
+                <ul class="helpIndentedList">
+                    <li>the target node to which the connection will be drawn.</li>
+                </ul>
+            </ul>
+        </blockquote>
+
+        <hr>
+        <h1 id="helpShortcuts">Shortcuts</h1>
+
+        <!--Shortcuts-->
+        <h2>Shortcuts</h2>
+        <p>
+            The system presents some keyboard shortcuts for easier navigation and accessibility:
+        <ul>
+            <li>SPACE -> reset graph zoom</li>
+            <li>ESC -> clear graph and information pane</li>
+        </ul>
+        </p>
+    </div>
+
+
+</body>
+
+</html>

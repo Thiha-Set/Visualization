@@ -1,6 +1,8 @@
 body{
     margin: 0px;
 }
+
+/*Visualization page styling*/
 #cy{
     width: 100vw;
     height: 80vh;
@@ -16,8 +18,18 @@ body{
     padding: 1%;
     margin-bottom: 1%;
 }
+
 h1.packets_heading{
     margin: 10px;
+}
+div.nav_bar{
+    background-color: rgb(156, 161, 182);
+    padding: 10px;
+}
+div.nav_bar a{
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
 }
 div.nodeInfo{
     background-color: rgba(255,255,255,0.8);
@@ -42,4 +54,97 @@ div.formDiv form input{
     margin-top: 1%;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
+}
+
+/*Help page styling*/
+
+/*table of contents*/
+div.help_toc{
+    background-color: rgb(228, 235, 240);
+    margin: 1%;
+    width: 20%;
+    padding: 10px;
+    border: solid 1px black
+}
+
+div.help_toc h1{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    margin: 0px;
+    text-decoration: underline
+}
+
+div.help_toc ul{
+    margin: 0px;
+    padding-left: 15px;
+}
+div.help_toc li{
+    padding-top: 5px;
+}
+div.help_toc a{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+div.help_toc a:hover{
+    text-decoration: underline;
+}
+
+/*main container*/
+div.help_main{
+    padding: 10px;
+}
+div.help_main h1{
+    font-weight: lighter;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    margin: 0px;
+    font-style: italic;
+}
+div.help_main h2{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    font-size: 25px;
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+div.help_main h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    margin: 0px;
+    margin-top: 1%;
+}
+div.help_main blockquote{
+    margin: 0px;
+    margin-bottom: 2%;
+}
+div.help_main blockquote p{
+    margin: 0px;
+    margin-left: 2%;
+}
+div.help_main p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+div.help_main ul{
+    margin: 0%;
+    padding-left: 3%;
+}
+
+div.help_main li{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+div.help_main ul.helpIndentedList{
+    list-style-type: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.help_main ul.helpIndentedList li{
+    list-style-type: none;
 }
