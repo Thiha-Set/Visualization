@@ -6,7 +6,63 @@ var elems = {}          // var to store elements from the json
 var netID = ""          // var to keep track of the current node id (IF USING DATABASE, MAKE THIS PRIMARY KEY)
 var IPCollection = []  //array of IP nodes connected to the current network
 var packets = []    //array of packets sent from the sIP to the dIP
-
+var protocols = new Map([
+    [0, "IP"],
+    [1, "ICMP"],
+    [2, "IGMP"],
+    [3, "GGP"],
+    [4, "IP-ENCAP"],
+    [5, "ST"],
+    [6, "TCP"],
+    [8, "EGP"],
+    [9, "IGP"],
+    [12, "PUP"],
+    [17, "UDP"],
+    [20, "HMP"],
+    [22, "XNS-IDP"],
+    [27, "RDP"],
+    [29, "ISO-TP4"],
+    [33, "DCCP"],
+    [36, "XTP"],
+    [37, "DDP"],
+    [38, "IDPR-CMTP"],
+    [41, "IPv6"],
+    [43, "IPv6-Route"],
+    [44, "IPv6-Frag"],
+    [45, "IDRP"],
+    [46, "RSVP"],
+    [47, "GRE"],
+    [50, "IPSEC-ESP"],
+    [51, "IPSEC-AH"],
+    [57, "SKIP"],
+    [58, "IPv6-ICMP"],
+    [59, "IPv6-NoNxt"],
+    [60, "IPv6-Opts"],
+    [73, "RSPF CPHB"],
+    [81, "VMTP"],
+    [88, "EIGRP"],
+    [89, "OSPFIGP"],
+    [93, "AX.25"],
+    [94, "IPIP"],
+    [97, "ETHERIP"],
+    [98, "ENCAP"],
+    [99, "Private Encryption"],
+    [103, "PIM"],
+    [108, "IPCOMP"],
+    [112, "VRRP"],
+    [115, "L2TP"],
+    [124, "ISIS"],
+    [132, "SCTP"],
+    [133, "FC"],
+    [135, "Mobility-Header"],
+    [136, "UDPLite"],
+    [137, "MPLS-in-IP"],
+    [138, "MANET"],
+    [139, "HIP"],
+    [140, "Shim6"],
+    [141, "WESP"],
+    [142, "ROHC"]
+])
 //user AJAX to retrieve elements.json
 //by using XMLHttpRequest
 /*
@@ -77,13 +133,6 @@ var graph = cytoscape({
         rows: 1
     }
 });
-
-
-
-
-
-
-
 
 //HELPER METHODS / AUXILIARY FUNCTIONS
 //toggleElement() - helper method for toggling certain elements 
@@ -250,16 +299,15 @@ function showPackets() {
 
 //handleProtocol() -> helper function to translate protocol num to the corresponding protocol
 function handleProtocol(protocolNum){
-    //17 = udp
-    //6 = tcp
-    //only two protocol nums used frequently
-    switch(protocolNum){
-        case 17:
-            return 'udp'
-            break
-        default:
-            return 'tcp'
-            break
+    //check to see if the protocolNum is valid (exists in the protocol map obj)
+    let protVal = protocols.get(protocolNum)
+    
+    //if protocolNum is not a key-value pairing in the protocol map 
+    if(typeof protVal != "undefined"){
+        return protVal
+    }
+    else{
+        return -1
     }
 }
 
@@ -309,51 +357,6 @@ function processJSON(input) {
             alert(reader.error)
         }
     }
-
-
-
-    /*
-    //get the file from the input
-    //any inputted user file generates a FileList
-    //so the single JSON file has to be retrieved in an
-    //array format
-    let file = input.files[0]
-    console.log(file)
-
-    //construct a new FileReader object
-    //to read the contents of the JSON file
-    let reader = new FileReader()
-
-    reader.onload = function () {
-        //remove any elements currently on the graph
-        //used to clear any elements loaded in with the
-        //previous JSON input before introducing the data
-        //in the new JSON input
-        //graph.elements().remove();
-
-        //try to parse the user inputted file
-        try {
-            //parsing the file into JSON
-            elems = JSON.parse(reader.result)
-
-            //add the elements to the graph
-            graph.add(elems)
-        }
-        //catching any errors & displaying a general
-        //error message
-        catch (error) {
-            alert('Invalid JSON file/format. Try again')
-        }
-    }
-    //read the JSON file as text
-    reader.readAsText(file)
-
-    //when the FileReader object fails to load
-    //alert out the error
-    reader.onerror = function () {
-        alert(reader.error)
-    }
-    */
 }
 
 //EVENT HANDLING
